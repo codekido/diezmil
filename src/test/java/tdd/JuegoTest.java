@@ -35,4 +35,9 @@ public class JuegoTest {
 	public void testDosUnosValen200() {
 		assertEquals("El primer jugador debería tener 200 puntos por los dos unos.", 200, juego.forzar(1, 2, 3, 1, 4).jugador(0).puntos());
 	}
+	
+	@Test
+	public void testTresUnosValen1000() {
+		assertEquals("El primer jugador debería tener 200 puntos por los dos unos.", 1000, juego.forzar(1, 2, 1, 1, 4).jugador(0).puntos());
+	}
 }
