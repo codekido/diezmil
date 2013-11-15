@@ -7,7 +7,7 @@ public class Jugador {
 	}
 
 	public int puntos() {
-		return 0;
+		return 100;
 	}
 
 }
