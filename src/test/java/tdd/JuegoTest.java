@@ -23,5 +23,8 @@ public class JuegoTest {
 			assertEquals(String.format("El jugador '%s' debería tener 0 puntos", j.nombre()), 0, j.puntos());
 		}
 	}
+	
+	@Test
+	public void test
 
 }
