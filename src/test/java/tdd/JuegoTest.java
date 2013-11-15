@@ -38,6 +38,27 @@ public class JuegoTest {
 	
 	@Test
 	public void testTresUnosValen1000() {
-		assertEquals("El primer jugador debería tener 200 puntos por los dos unos.", 1000, juego.forzar(1, 2, 1, 1, 4).jugador(0).puntos());
+		assertEquals("El primer jugador debería tener 1000 puntos por los tres unos.", 1000, juego.forzar(1, 2, 1, 1, 4).jugador(0).puntos());
 	}
+	
+	@Test
+	public void testCuatroUnosValen1100() {
+		assertEquals("El primer jugador debería tener 1100 puntos por los cuatro unos.", 1100, juego.forzar(1, 2, 1, 1, 1).jugador(0).puntos());
+	}
+	
+	@Test
+	public void testCincoUnosValen1200() {
+		assertEquals("El primer jugador debería tener 1200 puntos por los cinco unos.", 1200, juego.forzar(1, 1, 1, 1, 1).jugador(0).puntos());
+	}
+	
+	@Test
+	public void testElDosVale0() {
+		assertEquals("El primer jugador debería tener 0 puntos porque no hay números especiales.", 0, juego.forzar(3, 2, 3, 4, 4).jugador(0).puntos());
+	}
+	
+	@Test
+	public void testTresDosValen200() {
+		assertEquals("El primer jugador debería tener 200 puntos por los tres dos.", 200, juego.forzar(2, 3, 2, 3, 2).jugador(0).puntos());
+	}
+	
 }

@@ -19,9 +19,12 @@ public class Juego {
 	}
 
 	public Juego forzar(int... dados) {
+		int unos = 0;
 		for (int dado : dados) {
 			jugadorActual().add(dado == 1 ? 100 : 0);
+			if (dado == 1) ++unos;
 		}
+		if (unos >= 3) jugadorActual().add(700);
 		return this;
 	}
 	

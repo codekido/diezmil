@@ -19,7 +19,7 @@ public class DadoTest {
 	@Test
 	public void testRolaUnDado() {
 		Dado dado = new Dado();
-		assertTrue("El dado debería valer entre 1 y 6.", dado.rolar() > 0 && dado.rolar() < 7);
+		assertTrue("El dado debería va/ler entre 1 y 6.", dado.rolar() > 0 && dado.rolar() < 7);
 	}
 
 }
