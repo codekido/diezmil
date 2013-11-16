@@ -3,6 +3,9 @@ package tdd;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.collections.Bag;
+import org.apache.commons.collections.bag.HashBag;
+
 public class Juego {
 
 	private ArrayList<Jugador> jugadores;
@@ -19,15 +22,27 @@ public class Juego {
 	}
 
 	public Juego forzar(int... dados) {
-		int unos = 0;
-		for (int dado : dados) {
-			jugadorActual().add(dado == 1 ? 100 : 0);
-			if (dado == 1) ++unos;
+		
+		Bag tirada = getBag(dados);
+		if (tirada.getCount(1) >= 3) {
+			jugadorActual().add(700);
 		}
-		if (unos >= 3) jugadorActual().add(700);
+		if (tirada.getCount(2) >= 3) {
+			jugadorActual().add(200);
+		}
+		
+		jugadorActual().add(100 * tirada.getCount(1));
 		return this;
 	}
 	
+	private Bag getBag(int[] dados) {
+		Bag result = new HashBag();
+		for (int dado : dados) {
+			result.add(new Integer(dado));
+		}
+		return result;
+	}
+
 	private Jugador jugadorActual() {
 		return jugador(0);
 	}
