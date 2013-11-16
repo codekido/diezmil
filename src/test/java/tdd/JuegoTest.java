@@ -60,5 +60,10 @@ public class JuegoTest {
 	public void testTresDosValen200() {
 		assertEquals("El primer jugador debería tener 200 puntos por los tres dos.", 200, juego.forzar(2, 3, 2, 3, 2).jugador(0).puntos());
 	}
+
+	@Test
+	public void testTresTresValen300() {
+		assertEquals("El primer jugador debería tener 300 puntos por los tres tres.", 300, juego.forzar(2, 3, 3, 3, 2).jugador(0).puntos());
+	}
 	
 }
