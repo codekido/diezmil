@@ -24,24 +24,21 @@ public class Juego {
 	public Juego forzar(int... dados) {
 		
 		Bag tirada = getBag(dados);
-		if (tirada.getCount(1) >= 3) {
-			jugadorActual().add(700);
-		}
-		if (tirada.getCount(2) >= 3) {
-			jugadorActual().add(200);
-		}
-		if (tirada.getCount(3) >= 3) {
-			jugadorActual().add(300);
-		}
-		if (tirada.getCount(4) >= 3) {
-			jugadorActual().add(400);
-		}
-		
-		
-		
+		ternas(tirada);
 		jugadorActual().add(100 * tirada.getCount(1));
 		
 		return this;
+	}
+
+	private void ternas(Bag tirada) {
+		if (tirada.getCount(1) >= 3) {
+			jugadorActual().add(700);
+		}
+		for (int i=2; i<=4; ++i) {
+			if (tirada.getCount(i) >= 3) {
+				jugadorActual().add(i*100);
+			}
+		}
 	}
 	
 	private Bag getBag(int[] dados) {
