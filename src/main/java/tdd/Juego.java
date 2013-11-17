@@ -30,8 +30,13 @@ public class Juego {
 		if (tirada.getCount(2) >= 3) {
 			jugadorActual().add(200);
 		}
+		if (tirada.getCount(3) >= 3) {
+			jugadorActual().add(300);
+		}
+		
 		
 		jugadorActual().add(100 * tirada.getCount(1));
+		
 		return this;
 	}
 	
