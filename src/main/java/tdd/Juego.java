@@ -34,7 +34,7 @@ public class Juego {
 		if (tirada.getCount(1) >= 3) {
 			jugadorActual().add(700);
 		}
-		for (int i=2; i<=4; ++i) {
+		for (int i=2; i<=5; ++i) {
 			if (tirada.getCount(i) >= 3) {
 				jugadorActual().add(i*100);
 			}

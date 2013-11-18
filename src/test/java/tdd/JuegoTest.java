@@ -73,6 +73,11 @@ public class JuegoTest {
 	
 	@Test
 	public void testTresCincosValen500() {
-		assertEquals("El primer jugador deber��a tener 400 puntos por los tres cuatros.", 500, juego.forzar(2, 5, 5, 5, 2).jugador(0).puntos());
+		assertEquals("El primer jugador deber��a tener 500 puntos por los tres cincos.", 500, juego.forzar(2, 5, 5, 5, 2).jugador(0).puntos());
+	}
+	
+	@Test
+	public void testTresSiesValen600() {
+		assertEquals("El primer jugador deber��a tener 600 puntos por los tres seis.", 600, juego.forzar(2, 6, 6, 6, 2).jugador(0).puntos());
 	}
 }
