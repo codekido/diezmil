@@ -90,5 +90,10 @@ public class JuegoTest {
 	public void testCuatroCincosVale550() {
 		assertEquals("El primer jugador debería tener 550 puntos por los cuatro cincos.", 550, juego.forzar(2, 5, 5, 5, 5).jugador(0).puntos());
 	}
-	
+
+	@Test
+	public void testSeJuegaConSeisDados() {
+		assertEquals("Al comienzo del juego, los seis dados están disponibles.", 6, juego.dadosDisponibles());
+	}
+
 }
