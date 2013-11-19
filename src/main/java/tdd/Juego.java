@@ -26,7 +26,7 @@ public class Juego {
 		Bag tirada = getBag(dados);
 		ternas(tirada);
 		jugadorActual().add(100 * tirada.getCount(1));
-		
+		jugadorActual().add( 50 * tirada.getCount(5));
 		return this;
 	}
 
@@ -34,11 +34,13 @@ public class Juego {
 		if (tirada.getCount(1) >= 3) {
 			jugadorActual().add(700);
 		}
+		if (tirada.getCount(5) >= 3) {
+			jugadorActual().add(350);
+		}
 		for (int i=2; i<=6; ++i) {
+			if (i==5) continue;
 			if (tirada.getCount(i) >= 3) {
 				jugadorActual().add(i*100);
-			} else {
-				if (i==5) jugadorActual().add(50*tirada.getCount(5));
 			}
 		}
 	}

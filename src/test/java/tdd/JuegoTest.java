@@ -91,5 +91,4 @@ public class JuegoTest {
 		assertEquals("El primer jugador debería tener 550 puntos por los cuatro cincos.", 550, juego.forzar(2, 5, 5, 5, 5).jugador(0).puntos());
 	}
 	
-	
 }
