@@ -85,4 +85,11 @@ public class JuegoTest {
 	public void testElCincoVale50() {
 		assertEquals("El primer jugador debería tener 50 puntos por el cinco.", 50, juego.forzar(2, 2, 3, 4, 5).jugador(0).puntos());
 	}
+	
+	@Test
+	public void testCuatroCincosVale550() {
+		assertEquals("El primer jugador debería tener 550 puntos por los cuatro cincos.", 550, juego.forzar(2, 5, 5, 5, 5).jugador(0).puntos());
+	}
+	
+	
 }

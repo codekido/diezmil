@@ -37,6 +37,8 @@ public class Juego {
 		for (int i=2; i<=6; ++i) {
 			if (tirada.getCount(i) >= 3) {
 				jugadorActual().add(i*100);
+			} else {
+				if (i==5) jugadorActual().add(50*tirada.getCount(5));
 			}
 		}
 	}
