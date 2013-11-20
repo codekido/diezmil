@@ -96,9 +96,12 @@ public class JuegoTest {
 		assertEquals("El primer jugador debería tener 700 puntos por tres 5 y dos 1.", 700, juego.forzar(2, 2, 5, 5, 5).forzar(1, 1).jugador(0).puntos());
 	}
 
-	@Test(expected=InvalidMove.class)
+	@Test
 	public void test() {
-		assertEquals("Si todos los dados dan puntos, no se puede seguir.", 1100, juego.forzar(5, 5, 1, 1, 1).forzar(1, 1));
+		juego.forzar(5, 5, 1, 1, 1);
+		assertEquals("Si todos los dados dan puntos, sigue jugando el mismo jugador.",
+				juego.jugador(0)),
+				juego.jugadorActual();
 	}
 
 }
