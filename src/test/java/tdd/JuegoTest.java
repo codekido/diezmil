@@ -97,11 +97,11 @@ public class JuegoTest {
 	}
 
 	@Test
-	public void test() {
+	public void testTodosSumanSigueJugando() {
 		juego.forzar(5, 5, 1, 1, 1);
 		assertEquals("Si todos los dados dan puntos, sigue jugando el mismo jugador.",
-				juego.jugador(0)),
-				juego.jugadorActual();
+				juego.jugador(0),
+				juego.jugadorActual());
 	}
 
 }
