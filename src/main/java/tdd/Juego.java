@@ -53,7 +53,7 @@ public class Juego {
 		return result;
 	}
 
-	private Jugador jugadorActual() {
+	public Jugador jugadorActual() {
 		return jugador(0);
 	}
 
