@@ -103,5 +103,13 @@ public class JuegoTest {
 				juego.jugador(0),
 				juego.jugadorActual());
 	}
+	
+	@Test
+	public void testNingunoSumaJuegaOtro() {
+		juego.forzar(2, 2, 3, 3, 4);
+		assertNotEquals("Si ningún dado da puntos, juega otro jugador.",
+				juego.jugador(0),
+				juego.jugadorActual());		
+	}
 
 }
