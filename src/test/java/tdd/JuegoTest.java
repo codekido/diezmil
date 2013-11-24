@@ -112,4 +112,9 @@ public class JuegoTest {
 				juego.jugadorActual());		
 	}
 
+	@Test(expected=InvalidMove.class)
+	public void testSoloSeTiranLosDadosQueNoSumaron() {
+		juego.forzar(1, 2, 3, 4, 5).forzar(1, 2, 3, 4);
+		fail("Sólo puede relanzar 3 dados que son los que no suman");
+	}
 }
