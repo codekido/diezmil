@@ -11,6 +11,8 @@ public class Juego {
 
 	private ArrayList<Jugador> jugadores;
 	private int jugadorActual;
+	private int dadosParaJugar = 5;
+	private boolean primeraTirada = true;
 	
 	public Juego(int cantJugadores) {
 		jugadores = new ArrayList<Jugador>();
@@ -25,17 +27,27 @@ public class Juego {
 	}
 
 	// TODO: Refactory: separar el cálculo de puntos del cálculo de puntos.
-	public Juego forzar(int... dados) {
+	public Juego forzar(int... dados) throws InvalidMove {
 		int puntosAntes = jugadorActual().puntos();
 		Bag tirada = getBag(dados);
+		validaCantidadDeDados(tirada);
+		if (primeraTirada) primeraTirada = false;
 		ternas(tirada);
 		jugadorActual().add(100 * tirada.getCount(1));
 		jugadorActual().add( 50 * tirada.getCount(5));
 		int puntosDespues = jugadorActual().puntos();
 		if (puntosAntes == puntosDespues) {
 			siguienteJugador();
+			primeraTirada = true;
 		}
 		return this;
+	}
+
+	private void validaCantidadDeDados(Bag tirada) throws InvalidMove {
+		if (!primeraTirada){
+			if (dadosParaJugar-5 != tirada.size())
+				throw new InvalidMove();
+		}
 	}
 
 	private void siguienteJugador() {
@@ -54,6 +66,8 @@ public class Juego {
 			if (i==5) continue;
 			if (tirada.getCount(i) >= 3) {
 				jugadorActual().add(i*100);
+			}else{
+				dadosParaJugar += tirada.getCount(i);
 			}
 		}
 	}
