@@ -6,28 +6,40 @@ import java.util.List;
 import org.apache.commons.collections.Bag;
 import org.apache.commons.collections.bag.HashBag;
 
+// TODO: Refactory: que una clase maneje turnos (y use una lista circular?)
 public class Juego {
 
 	private ArrayList<Jugador> jugadores;
+	private int jugadorActual;
 	
 	public Juego(int cantJugadores) {
 		jugadores = new ArrayList<Jugador>();
 		for (int i=0; i<cantJugadores; ++i) {
 			jugadores.add(new Jugador());
 		}
+		jugadorActual = 0;
 	}
 	
 	public List<Jugador> jugadores() {
 		return jugadores;
 	}
 
+	// TODO: Refactory: separar el cálculo de puntos del cálculo de puntos.
 	public Juego forzar(int... dados) {
-		
+		int puntosAntes = jugadorActual().puntos();
 		Bag tirada = getBag(dados);
 		ternas(tirada);
 		jugadorActual().add(100 * tirada.getCount(1));
 		jugadorActual().add( 50 * tirada.getCount(5));
+		int puntosDespues = jugadorActual().puntos();
+		if (puntosAntes == puntosDespues) {
+			siguienteJugador();
+		}
 		return this;
+	}
+
+	private void siguienteJugador() {
+		jugadorActual = jugadorActual+1 % jugadores().size();
 	}
 
 	private void ternas(Bag tirada) {
@@ -54,7 +66,7 @@ public class Juego {
 	}
 
 	public Jugador jugadorActual() {
-		return jugador(0);
+		return jugadores.get(jugadorActual);
 	}
 
 	public Jugador jugador(int orden){

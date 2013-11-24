@@ -12,7 +12,7 @@ public class JuegoTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		juego = new Juego(1);
+		juego = new Juego(2);
 	}
 
 	@After
