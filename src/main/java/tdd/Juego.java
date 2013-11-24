@@ -39,7 +39,8 @@ public class Juego {
 	}
 
 	private void siguienteJugador() {
-		jugadorActual = jugadorActual+1 % jugadores().size();
+		int siguiente = jugadorActual+1;
+		jugadorActual = siguiente >= jugadores().size() ? 0 : siguiente;
 	}
 
 	private void ternas(Bag tirada) {
