@@ -44,7 +44,7 @@ public class Juego {
 	}
 
 	private void validaCantidadDeDados(Bag tirada) throws InvalidMove {
-		if (!primeraTirada){
+		if (!primeraTirada) {
 			if (dadosParaJugar-5 != tirada.size())
 				throw new InvalidMove();
 		}
@@ -66,7 +66,7 @@ public class Juego {
 			if (i==5) continue;
 			if (tirada.getCount(i) >= 3) {
 				jugadorActual().add(i*100);
-			}else{
+			} else {
 				dadosParaJugar += tirada.getCount(i);
 			}
 		}
