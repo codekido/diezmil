@@ -12,7 +12,6 @@ public class Juego {
 	private ArrayList<Jugador> jugadores;
 	private int jugadorActual;
 	private int dadosParaJugar = 5;
-	private boolean primeraTirada = true;
 	
 	public Juego(int cantJugadores) {
 		jugadores = new ArrayList<Jugador>();
@@ -31,28 +30,30 @@ public class Juego {
 		int puntosAntes = jugadorActual().puntos();
 		Bag tirada = getBag(dados);
 		validaCantidadDeDados(tirada);
-		if (primeraTirada) primeraTirada = false;
 		ternas(tirada);
 		jugadorActual().add(100 * tirada.getCount(1));
+		dadosParaJugar -= tirada.getCount(1);
 		jugadorActual().add( 50 * tirada.getCount(5));
+		dadosParaJugar -= tirada.getCount(5);
 		int puntosDespues = jugadorActual().puntos();
 		if (puntosAntes == puntosDespues) {
 			siguienteJugador();
-			primeraTirada = true;
+		}
+		if  (dadosParaJugar == 0) {
+			dadosParaJugar = 5;
 		}
 		return this;
 	}
 
 	private void validaCantidadDeDados(Bag tirada) throws InvalidMove {
-		if (!primeraTirada) {
-			if (dadosParaJugar-5 != tirada.size())
-				throw new InvalidMove();
-		}
+		if (dadosParaJugar != tirada.size())
+			throw new InvalidMove();
 	}
 
 	private void siguienteJugador() {
 		int siguiente = jugadorActual+1;
 		jugadorActual = siguiente >= jugadores().size() ? 0 : siguiente;
+		dadosParaJugar = 5;
 	}
 
 	private void ternas(Bag tirada) {
@@ -66,8 +67,7 @@ public class Juego {
 			if (i==5) continue;
 			if (tirada.getCount(i) >= 3) {
 				jugadorActual().add(i*100);
-			} else {
-				dadosParaJugar += tirada.getCount(i);
+				dadosParaJugar -= 3;
 			}
 		}
 	}
@@ -86,6 +86,10 @@ public class Juego {
 
 	public Jugador jugador(int orden){
 		return jugadores.get(orden);
+	}
+
+	public boolean sigueJugando() {
+		return true;
 	}
 
 }
