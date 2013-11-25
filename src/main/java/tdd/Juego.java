@@ -26,7 +26,7 @@ public class Juego {
 		return jugadores;
 	}
 
-	// TODO: Refactory: separar el cálculo de puntos del cálculo de puntos.
+	// TODO: Refactory: separar el cálculo de puntos del cálculo de turnos.
 	public Juego forzar(int... dados) throws InvalidMove {
 		int puntosAntes = jugadorActual().puntos();
 		Bag tirada = getBag(dados);
