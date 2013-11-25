@@ -119,9 +119,11 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void testCincoDadosSumanJugadorEligeSeguirONoJugando() throws InvalidMove {
+	public void testCincoDadosSumanJugadorEligePlantarse() throws InvalidMove {
 		juego.forzar(1, 1, 1, 1, 1);
-		assertTrue("El jugador no debería poder jugar si elige anotar los puntos que consiguió", juego.forzar(1, 1, 1, 2, 2).sigueJugando());
+		juego.sePlanta();
+		assertEquals("El turno debería ser de jugador 1 ya que 0 se plantó", juego.jugador(1), juego.jugadorActual());
+		assertEquals("El jugador 0 debería tener 1200 puntos por plantarse", 1200, juego.jugador(0).puntos());
 	}
 	
 }
