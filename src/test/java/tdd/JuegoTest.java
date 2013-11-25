@@ -126,4 +126,10 @@ public class JuegoTest {
 		assertEquals("El jugador 0 debería tener 1200 puntos por plantarse", 1200, juego.jugador(0).puntos());
 	}
 	
+	@Test
+	public void testSigueJugandoPierdeTodo() throws InvalidMove {
+		juego.forzar(1, 1, 1, 1, 1).forzar(2, 2, 3, 3, 4);
+		assertEquals("El jugador 0 debería tener 0 puntos por seguir y perder", 0, juego.jugador(0).puntos());
+	}
+	
 }
