@@ -88,8 +88,9 @@ public class Juego {
 		return jugadores.get(orden);
 	}
 
-	public boolean sigueJugando() {
-		return true;
+	public Juego sePlanta() {
+		siguienteJugador();
+		return this;
 	}
 
 }
