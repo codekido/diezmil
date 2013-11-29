@@ -148,7 +148,6 @@ public class JuegoTest {
 		assertEquals("El jugador 0 debería tener 1500 puntos por plantarse", 1500, juego.jugador(0).puntos());
 	}
 	
-	/*
 	@Test
 	public void testElTurnoVuelveAlJugadorUno() throws InvalidMove {
 		juego.forzar(1,1,1,3,2);
@@ -156,5 +155,4 @@ public class JuegoTest {
 		juego.forzar(2,3,4,6,2);
 		assertEquals("El turno corresponde al jugador uno, ya que el jugador dos no sumó puntos en su tirada.", juego.jugador(1), juego.jugadorActual());
 	}
-	*/
 }
