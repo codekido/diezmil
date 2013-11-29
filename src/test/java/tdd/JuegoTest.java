@@ -132,4 +132,5 @@ public class JuegoTest {
 		assertEquals("El jugador 0 debería tener 0 puntos por seguir y perder", 0, juego.jugador(0).puntos());
 	}
 	
+	
 }

@@ -15,4 +15,9 @@ public class Jugador {
 		puntos+=cant;
 		return this;
 	}
+
+	public Jugador pierdeTodo() {
+		puntos -= puntos;
+		return this;
+	}
 }

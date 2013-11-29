@@ -31,10 +31,15 @@ public class Juego {
 		Bag tirada = getBag(dados);
 		validaCantidadDeDados(tirada);
 		ternas(tirada);
+		
 		jugadorActual().add(100 * tirada.getCount(1));
 		dadosParaJugar -= tirada.getCount(1);
+		
 		jugadorActual().add( 50 * tirada.getCount(5));
 		dadosParaJugar -= tirada.getCount(5);
+		
+		if (dadosParaJugar == tirada.size()) jugadorActual().pierdeTodo();
+		
 		int puntosDespues = jugadorActual().puntos();
 		if (puntosAntes == puntosDespues) {
 			siguienteJugador();
