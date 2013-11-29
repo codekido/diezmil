@@ -25,8 +25,22 @@ public class Juego {
 		return jugadores;
 	}
 
-	// TODO: Refactory: separar el cálculo de puntos del cálculo de turnos.
 	public Juego forzar(int... dados) throws InvalidMove {
+		
+		int puntosAntes = calculaPuntosJugada(dados);
+		resuelveTurnos(puntosAntes);
+		
+		return this;
+	}
+
+	private void resuelveTurnos(int puntosAntes) {
+		int puntosDespues = jugadorActual().puntos();
+		if (puntosAntes == puntosDespues) {
+			siguienteJugador();
+		}
+	}
+
+	private int calculaPuntosJugada(int... dados) throws InvalidMove {
 		int puntosAntes = jugadorActual().puntos();
 		Bag tirada = getBag(dados);
 		validaCantidadDeDados(tirada);
@@ -40,14 +54,11 @@ public class Juego {
 		
 		if (dadosParaJugar == tirada.size()) jugadorActual().pierdeTodo();
 		
-		int puntosDespues = jugadorActual().puntos();
-		if (puntosAntes == puntosDespues) {
-			siguienteJugador();
-		}
 		if  (dadosParaJugar == 0) {
 			dadosParaJugar = 5;
 		}
-		return this;
+		
+		return puntosAntes;
 	}
 
 	private void validaCantidadDeDados(Bag tirada) throws InvalidMove {
