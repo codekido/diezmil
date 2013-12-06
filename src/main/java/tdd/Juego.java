@@ -65,7 +65,7 @@ public class Juego {
 
 	private void validaCantidadDeDados(Bag tirada) throws InvalidMove {
 		if (dadosParaJugar != tirada.size())
-			throw new InvalidMove();
+			throw new InvalidMove(String.format("Sólo puede jugar %d dados.", dadosParaJugar));
 	}
 
 	private void siguienteJugador() {
