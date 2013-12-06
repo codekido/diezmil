@@ -2,6 +2,7 @@ package tdd;
 
 public class Jugador {
 	private int puntos;
+	private int puntosSeguros;
 	
 	public String nombre() {
 		return "Jugador";
@@ -16,8 +17,13 @@ public class Jugador {
 		return this;
 	}
 
-	public Jugador pierdeTodo() {
-		puntos -= puntos;
+	public Jugador pierdePuntos() {
+		puntos = puntosSeguros;
+		return this;
+	}
+	
+	public Jugador aseguraPuntos() {
+		puntosSeguros = puntos;
 		return this;
 	}
 }

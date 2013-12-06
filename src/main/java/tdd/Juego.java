@@ -53,7 +53,7 @@ public class Juego {
 		dadosParaJugar -= tirada.getCount(5);
 		
 		if (dadosParaJugar == tirada.size()) {
-			jugadorActual().pierdeTodo();
+			jugadorActual().pierdePuntos();
 		}
 		
 		if  (dadosParaJugar == 0) {
@@ -107,6 +107,7 @@ public class Juego {
 	}
 
 	public Juego sePlanta() {
+		jugadorActual().aseguraPuntos();
 		siguienteJugador();
 		return this;
 	}
