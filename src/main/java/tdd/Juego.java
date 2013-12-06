@@ -52,7 +52,9 @@ public class Juego {
 		jugadorActual().add( 50 * tirada.getCount(5));
 		dadosParaJugar -= tirada.getCount(5);
 		
-		if (dadosParaJugar == tirada.size()) jugadorActual().pierdeTodo();
+		if (dadosParaJugar == tirada.size()) {
+			jugadorActual().pierdeTodo();
+		}
 		
 		if  (dadosParaJugar == 0) {
 			dadosParaJugar = 5;
