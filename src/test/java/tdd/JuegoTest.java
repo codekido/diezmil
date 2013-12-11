@@ -164,4 +164,14 @@ public class JuegoTest {
 		assertEquals("El primer jugaodr debería tener 1000 puntos del turno anterior.", 1000, juego.jugador(0).puntos());
 	}
 
+	@Test
+	public void testEn10000TerminaElJuego() throws InvalidMove {
+		for(int i=0; i<10; i++) {
+			juego.forzar(2, 3, 2, 3, 4);
+			juego.forzar(1, 1, 1, 2, 3);
+			juego.sePlanta();
+		}
+		assertTrue("El juego debería terminar porque jugador 2 llegó a 10000.", juego.finalizado());
+		assertEquals("El ganador debería ser el jugador 2 porque tiene 10000 puntos y el jugador 1 tiene cero.", juego.jugador(1), juego.ganador());
+	}
 }

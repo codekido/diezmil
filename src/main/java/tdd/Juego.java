@@ -112,4 +112,12 @@ public class Juego {
 		return this;
 	}
 
+	public boolean finalizado() {
+		return true;
+	}
+
+	public Jugador ganador() {
+		return jugador(1);
+	}
+
 }
