@@ -113,11 +113,16 @@ public class Juego {
 	}
 
 	public boolean finalizado() {
-		return true;
+		return ganador() != null;
 	}
 
 	public Jugador ganador() {
-		return jugador(1);
+		for (Jugador j: jugadores()) {
+			if (j.puntos() == 10000) {
+				return j;
+			}
+		}
+		return null;
 	}
 
 }
