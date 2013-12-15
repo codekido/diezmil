@@ -188,5 +188,21 @@ public class JuegoTest {
 		assertFalse("El juego no debería terminar porque jugador 2 llegó a 9950.", juego.finalizado());
 		assertNull("No hay ganador porque el juego no terminó.", juego.ganador());
 	}
+	
+	@Test
+	public void testElJuegoTerminaCon10000Exactos() throws InvalidMove {
+		for(int i=0; i<9; i++) {
+			juego.forzar(2, 3, 2, 3, 4);
+			juego.forzar(1, 1, 1, 2, 3);
+			juego.sePlanta();
+		}
+		juego.forzar(2, 3, 2, 3, 4);
+		juego.forzar(5, 5, 5, 1, 1);
+		juego.forzar(1, 1, 1, 5, 2);
+		assertFalse("El juego no debería terminar porque jugador 2 superó los 10000.", juego.finalizado());
+		assertNull("No hay ganador porque el juego terminó.", juego.ganador());
+	}
+	
+
 
 }
