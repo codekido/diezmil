@@ -26,7 +26,7 @@ public class Juego {
 		return jugadores;
 	}
 
-	public Juego forzar(int... dados) throws InvalidMove {
+	public Juego forzar(int... dados) throws MovidaInvalida {
 		tiradas++;
 		int puntosAntes = calculaPuntosJugada(dados);
 		resuelveTurnos(puntosAntes);
@@ -41,7 +41,7 @@ public class Juego {
 		}
 	}
 
-	private int calculaPuntosJugada(int... dados) throws InvalidMove {
+	private int calculaPuntosJugada(int... dados) throws MovidaInvalida {
 		int puntosAntes = jugadorActual().puntos();
 		Bag tirada = getBag(dados);
 		validaCantidadDeDados(tirada);
@@ -64,9 +64,9 @@ public class Juego {
 		return puntosAntes;
 	}
 
-	private void validaCantidadDeDados(Bag tirada) throws InvalidMove {
+	private void validaCantidadDeDados(Bag tirada) throws MovidaInvalida {
 		if (dadosParaJugar != tirada.size())
-			throw new InvalidMove(String.format("Sólo puede jugar %d dados.", dadosParaJugar));
+			throw new MovidaInvalida(String.format("Sólo puede jugar %d dados.", dadosParaJugar));
 	}
 
 	private void siguienteJugador() {
@@ -108,16 +108,16 @@ public class Juego {
 		return jugadores.get(orden);
 	}
 
-	public Juego sePlanta() throws InvalidMove {
+	public Juego sePlanta() throws MovidaInvalida {
 		requisito(tiradas>0, "No puede plantarse si no tiró al menos una vez.");
 		jugadorActual().aseguraPuntos();
 		siguienteJugador();
 		return this;
 	}
 
-	private void requisito(boolean condicion, String mensaje) throws InvalidMove {
+	private void requisito(boolean condicion, String mensaje) throws MovidaInvalida {
 		if (!condicion) {
-			throw new InvalidMove(mensaje);
+			throw new MovidaInvalida(mensaje);
 		}
 		
 	}
