@@ -203,6 +203,9 @@ public class JuegoTest {
 		assertNull("No hay ganador porque el juego terminó.", juego.ganador());
 	}
 	
-
+	@Test(expected=InvalidMove.class)
+	public void testNoSePuedePasarElTurno() throws InvalidMove {
+		juego.sePlanta();
+	}
 
 }

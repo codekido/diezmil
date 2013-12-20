@@ -12,6 +12,7 @@ public class Juego {
 	private ArrayList<Jugador> jugadores;
 	private int jugadorActual;
 	private int dadosParaJugar = 5;
+	private int tiradas;
 	
 	public Juego(int cantJugadores) {
 		jugadores = new ArrayList<Jugador>();
@@ -26,7 +27,7 @@ public class Juego {
 	}
 
 	public Juego forzar(int... dados) throws InvalidMove {
-		
+		tiradas++;
 		int puntosAntes = calculaPuntosJugada(dados);
 		resuelveTurnos(puntosAntes);
 		
@@ -69,6 +70,7 @@ public class Juego {
 	}
 
 	private void siguienteJugador() {
+		tiradas = 0;
 		int siguiente = jugadorActual+1;
 		jugadorActual = siguiente >= jugadores().size() ? 0 : siguiente;
 		dadosParaJugar = 5;
@@ -106,10 +108,18 @@ public class Juego {
 		return jugadores.get(orden);
 	}
 
-	public Juego sePlanta() {
+	public Juego sePlanta() throws InvalidMove {
+		requisito(tiradas>0, "No puede plantarse si no tiró al menos una vez.");
 		jugadorActual().aseguraPuntos();
 		siguienteJugador();
 		return this;
+	}
+
+	private void requisito(boolean condicion, String mensaje) throws InvalidMove {
+		if (!condicion) {
+			throw new InvalidMove(mensaje);
+		}
+		
 	}
 
 	public boolean finalizado() {
