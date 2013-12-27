@@ -1,4 +1,4 @@
-package tdd;
+package com.codekido.diezmil;
 
 public class Dado {
 

@@ -1,10 +1,14 @@
-package tdd;
+package com.codekido.diezmil.tests;
 
 import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.codekido.diezmil.Juego;
+import com.codekido.diezmil.Jugador;
+import com.codekido.diezmil.MovidaInvalida;
 
 public class JuegoTest {
 

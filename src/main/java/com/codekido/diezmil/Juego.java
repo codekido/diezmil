@@ -1,4 +1,4 @@
-package tdd;
+package com.codekido.diezmil;
 
 import java.util.ArrayList;
 import java.util.List;
