@@ -243,5 +243,12 @@ public class JuegoTest {
 		assertEquals("El turno corresponde al último jugador uno, ya que todos los jugadores pasaron.", juegoMuchos.jugador(33), juegoMuchos.jugadorActual());
 	}
 
+	@Test(expected=MovidaInvalida.class)
+	public void testNoSePuedePlantarConMenosDe750EnLaPrimeraJugada() throws MovidaInvalida {
+		juego.forzar(1, 1, 2, 5, 2);
+		juego.forzar(1, 4);
+		juego.sePlanta();
+	}
+
 	
 }

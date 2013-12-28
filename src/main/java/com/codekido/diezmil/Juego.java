@@ -110,6 +110,7 @@ public class Juego {
 
 	public Juego sePlanta() throws MovidaInvalida {
 		requisito(tiradas>0, "No puede plantarse si no tiró al menos una vez.");
+		requisito(jugadorActual().puntos()>750, "No se puede plantar antes de tener 750");
 		jugadorActual().aseguraPuntos();
 		siguienteJugador();
 		return this;
