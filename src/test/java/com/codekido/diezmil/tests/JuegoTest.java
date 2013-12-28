@@ -260,5 +260,14 @@ public class JuegoTest {
 		juego.forzar(1, 4);
 		juego.sePlanta();
 	}
-	
+
+	@Test
+	public void testSePuedePlantarConExactamente750() throws MovidaInvalida {
+		juego.forzar(5, 5, 5, 1, 1);
+		juego.forzar(5, 4, 4, 2, 2);	
+		juego.sePlanta();
+		assertEquals("El primer jugador termina su turno exitosamente", juego.jugador(1), juego.jugadorActual());
+		assertEquals("El primer jugador obtiene sus 750 puntos", 750, juego.jugador(0).puntos());
+	}
+
 }
