@@ -1,7 +1,5 @@
 package com.codekido.diezmil;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import org.junit.Before;
@@ -16,8 +14,10 @@ public class JuegoApiTest {
 		juego = new Juego(2);
 	}
 
-	@Test
-	public void testJuego() {
+	@Test(expected=IllegalArgumentException.class)
+	public void testJuego() throws MovidaInvalida {
+		@SuppressWarnings("unused")
+		Juego juegoVacio = new Juego(0);
 	}
 
 	@Test(expected=UnsupportedOperationException.class)

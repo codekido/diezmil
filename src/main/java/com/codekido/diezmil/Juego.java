@@ -15,12 +15,13 @@ public class Juego {
 	private int tiradas;
 	
 	public Juego(int cantJugadores) {
+		requisitoApi(cantJugadores>0, "Debe haber al menos un jugador");
 		jugadores = new ArrayList<Jugador>();
 		for (int i=0; i<cantJugadores; ++i) {
 			jugadores.add(new Jugador());
 		}
 	}
-	
+
 	public List<Jugador> jugadores() {
 		return Collections.unmodifiableList(jugadores);
 	}
@@ -124,6 +125,10 @@ public class Juego {
 			throw new MovidaInvalida(mensaje);
 		}
 		
+	}
+	
+	private void requisitoApi(boolean b, String string) {
+		if (!b) throw new IllegalArgumentException(string);
 	}
 
 	public boolean finalizado() {
