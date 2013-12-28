@@ -27,6 +27,7 @@ public class Juego {
 	}
 
 	public Juego forzar(int... dados) throws MovidaInvalida {
+		requisitoApi(tiradaValida(dados), "Dónde compraste esos dados? Esto no es un juego de rol");
 		tiradas++;
 		int puntosAntes = calculaPuntosJugada(dados);
 		resuelveTurnos(puntosAntes);
@@ -142,6 +143,14 @@ public class Juego {
 			}
 		}
 		return null;
+	}
+
+	private boolean tiradaValida(int[] dados) {
+		boolean valid = dados.length > 0 && dados.length <= 5;
+		for (int dado : dados) {
+			valid = valid && (dado>=1 && dado<=6);
+		}
+		return valid;
 	}
 
 }

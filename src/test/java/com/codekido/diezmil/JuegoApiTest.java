@@ -26,8 +26,19 @@ public class JuegoApiTest {
 		changos.remove(1);
 	}
 
-	@Test
-	public void testForzar() {
+	@Test(expected=IllegalArgumentException.class)
+	public void testValoresValidosDeDados() throws MovidaInvalida {
+		juego.forzar(-3, 0, 9, 2334343, 2);
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testCantidadValidaDeDados() throws MovidaInvalida {
+		juego.forzar(1, 2, 3, 4, 5, 4, 3);
+	}
+
+	@Test(expected=IllegalArgumentException.class)
+	public void testCantidadValidaDeDados2() throws MovidaInvalida {
+		juego.forzar();
 	}
 
 	@Test
