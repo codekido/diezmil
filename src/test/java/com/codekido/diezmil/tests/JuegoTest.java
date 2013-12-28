@@ -211,5 +211,15 @@ public class JuegoTest {
 	public void testNoSePuedePasarElTurno() throws MovidaInvalida {
 		juego.sePlanta();
 	}
-
+	
+	@Test
+	public void testElTurnoVuelveAlJugadorUnoSinImportarCuantosJuegan() throws MovidaInvalida {
+		Juego juego3 = new Juego(3);
+		juego3.forzar(1, 1, 1, 3, 2);
+		juego3.sePlanta();
+		juego3.forzar(2, 3, 4, 6, 2);
+		juego3.forzar(1, 1, 1, 1, 1);
+		juego3.sePlanta();
+		assertEquals("El turno corresponde al jugador uno, ya que todos los jugadores pasaron.", juego3.jugador(0), juego3.jugadorActual());
+	}
 }
