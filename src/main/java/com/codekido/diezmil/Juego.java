@@ -1,6 +1,7 @@
 package com.codekido.diezmil;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.commons.collections.Bag;
@@ -21,7 +22,7 @@ public class Juego {
 	}
 	
 	public List<Jugador> jugadores() {
-		return jugadores;
+		return Collections.unmodifiableList(jugadores);
 	}
 
 	public Juego forzar(int... dados) throws MovidaInvalida {

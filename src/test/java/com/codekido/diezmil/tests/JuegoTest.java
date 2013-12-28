@@ -19,10 +19,6 @@ public class JuegoTest {
 		juego = new Juego(2);
 	}
 
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void testTodosEmpiezanConCeroPuntos() {
 		for (Jugador j : juego.jugadores()) {
