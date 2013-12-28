@@ -268,4 +268,11 @@ public class JuegoTest {
 		assertEquals("El primer jugador obtiene sus 750 puntos", 750, juego.jugador(0).puntos());
 	}
 
+	@Test
+	public void testTurnoLerdo() throws MovidaInvalida {
+		juego.forzar(6, 6, 6, 2, 1);
+		juego.forzar(2);	
+		assertEquals("El primer jugador termina su turno exitosamente", juego.jugador(1), juego.jugadorActual());
+	}
+
 }

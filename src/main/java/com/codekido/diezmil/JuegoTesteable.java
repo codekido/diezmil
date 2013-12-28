@@ -35,7 +35,7 @@ public class JuegoTesteable implements Juego {
 	}
 
 	protected int calculaPuntosJugada(int... dados) throws MovidaInvalida {
-		int puntosAntes = jugadorActual().puntos();
+		int puntosAntes = jugadorActual().puntosSeguros();
 		Bag tirada = getBag(dados);
 		validaCantidadDeDados(tirada);
 		ternas(tirada);

@@ -35,4 +35,9 @@ public class JugadorImpl implements Jugador {
 	public String toString() {
 		return nombre();
 	}
+
+	@Override
+	public int puntosSeguros() {
+		return puntosSeguros;
+	}
 }

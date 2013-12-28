@@ -6,4 +6,6 @@ public interface Jugador {
 
 	public abstract int puntos();
 
+	public abstract int puntosSeguros();
+
 }
