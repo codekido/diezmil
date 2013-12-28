@@ -56,6 +56,10 @@ public class Juego {
 			jugadorActual().pierdePuntos();
 		}
 		
+		if (jugadorActual().puntos() > 10000) {
+			jugadorActual().pierdePuntos();
+		}
+		
 		if  (dadosParaJugar == 0) {
 			dadosParaJugar = 5;
 		}
