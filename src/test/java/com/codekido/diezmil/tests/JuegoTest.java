@@ -222,6 +222,17 @@ public class JuegoTest {
 		juego3.sePlanta();
 		assertEquals("El turno corresponde al jugador uno, ya que todos los jugadores pasaron.", juego3.jugador(0), juego3.jugadorActual());
 	}
+	
+	@Test
+	public void testSumanTodosYsigueYPasaLos750Puntos() throws MovidaInvalida {
+		Juego juegoReal = new Juego(3);
+		juegoReal.forzar(1, 1, 3, 3, 3);
+		juegoReal.forzar(2, 2, 5, 5, 4);
+		juegoReal.forzar(1, 2, 2);
+		juegoReal.forzar(1, 3);
+		juegoReal.sePlanta();
+		assertEquals("El jugador uno suma 800 puntos.", 800, juegoReal.jugador(0).puntos());
+	}
 
 	@Test
 	public void testElTurnoVuelveAlJugadorUnoSinImportarCuantosJuegan() throws MovidaInvalida {
@@ -249,6 +260,5 @@ public class JuegoTest {
 		juego.forzar(1, 4);
 		juego.sePlanta();
 	}
-
 	
 }
