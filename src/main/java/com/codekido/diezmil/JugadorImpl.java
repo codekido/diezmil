@@ -3,9 +3,14 @@ package com.codekido.diezmil;
 public class JugadorImpl implements Jugador {
 	private int puntos;
 	private int puntosSeguros;
+	private String nombre;
+	
+	public JugadorImpl(String nombre) {
+		this.nombre = nombre;
+	}
 	
 	public String nombre() {
-		return "Jugador";
+		return nombre;
 	}
 
 	public int puntos() {
@@ -25,5 +30,9 @@ public class JugadorImpl implements Jugador {
 	public Jugador aseguraPuntos() {
 		puntosSeguros = puntos;
 		return this;
+	}
+	
+	public String toString() {
+		return nombre();
 	}
 }

@@ -17,7 +17,7 @@ public class JuegoApiTest {
 	@Test(expected=IllegalArgumentException.class)
 	public void testJuego() throws MovidaInvalida {
 		@SuppressWarnings("unused")
-		Juego juegoVacio = new Juego(0);
+		Juego juegoVacio = new JuegoTesteable(0);
 	}
 
 	@Test(expected=UnsupportedOperationException.class)
