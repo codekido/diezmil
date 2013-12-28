@@ -152,17 +152,17 @@ public class JuegoTest {
 	
 	@Test
 	public void testElTurnoVuelveAlJugadorUno() throws MovidaInvalida {
-		juego.forzar(1,1,1,3,2);
+		juego.forzar(1, 1, 1, 3, 2);
 		juego.sePlanta();
-		juego.forzar(2,3,4,6,2);
+		juego.forzar(2, 3, 4, 6, 2);
 		assertEquals("El turno corresponde al jugador uno, ya que el jugador dos no sumó puntos en su tirada.", juego.jugador(0), juego.jugadorActual());
 	}
 
 	@Test
 	public void testArriesgaYPierdeSoloPuntosTurnoActual() throws MovidaInvalida {
-		juego.forzar(1,1,1,3,2);
+		juego.forzar(1, 1, 1, 3, 2);
 		juego.sePlanta();
-		juego.forzar(2,3,4,6,2);
+		juego.forzar(2, 3, 4, 6, 2);
 		juego.forzar(1, 2, 3, 4, 5);
 		juego.forzar(2, 3, 2);
 		assertEquals("El primer jugaodr debería tener 1000 puntos del turno anterior.", 1000, juego.jugador(0).puntos());
