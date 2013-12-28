@@ -205,7 +205,10 @@ public class JuegoTest {
 		juego.forzar(1, 1, 1, 5, 2);
 		assertFalse("El juego no debería terminar porque jugador 2 superó los 10000.", juego.finalizado());
 		assertNull("No hay ganador porque el juego terminó.", juego.ganador());
+		assertEquals("El jugador 2 debería tener 9000 puntos ya que los de la última tirada no suma al haber superado los"
+				+ "10000 puntos.", 9000, juego.jugador(1).puntos());
 	}
+	
 	
 	@Test(expected=MovidaInvalida.class)
 	public void testNoSePuedePasarElTurno() throws MovidaInvalida {
