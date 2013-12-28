@@ -22,7 +22,7 @@ public class JuegoApiTest {
 
 	@Test(expected=UnsupportedOperationException.class)
 	public void testJugadores() throws MovidaInvalida {
-		List<Jugador> changos = juego.jugadores();
+		List<? extends Jugador> changos = juego.jugadores();
 		changos.remove(1);
 	}
 

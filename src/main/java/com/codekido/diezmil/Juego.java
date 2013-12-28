@@ -9,20 +9,20 @@ import org.apache.commons.collections.bag.HashBag;
 
 public class Juego {
 
-	private ArrayList<Jugador> jugadores;
+	private ArrayList<JugadorImpl> jugadores;
 	private int jugadorActual;
 	private int dadosParaJugar = 5;
 	private int tiradas;
 	
 	public Juego(int cantJugadores) {
 		requisitoApi(cantJugadores>0, "Debe haber al menos un jugador");
-		jugadores = new ArrayList<Jugador>();
+		jugadores = new ArrayList<JugadorImpl>();
 		for (int i=0; i<cantJugadores; ++i) {
-			jugadores.add(new Jugador());
+			jugadores.add(new JugadorImpl());
 		}
 	}
 
-	public List<Jugador> jugadores() {
+	public List<? extends Jugador> jugadores() {
 		return Collections.unmodifiableList(jugadores);
 	}
 
@@ -48,18 +48,18 @@ public class Juego {
 		validaCantidadDeDados(tirada);
 		ternas(tirada);
 		
-		jugadorActual().add(100 * tirada.getCount(1));
+		jugadorActualImpl().add(100 * tirada.getCount(1));
 		dadosParaJugar -= tirada.getCount(1);
 		
-		jugadorActual().add( 50 * tirada.getCount(5));
+		jugadorActualImpl().add( 50 * tirada.getCount(5));
 		dadosParaJugar -= tirada.getCount(5);
 		
 		if (dadosParaJugar == tirada.size()) {
-			jugadorActual().pierdePuntos();
+			jugadorActualImpl().pierdePuntos();
 		}
 		
 		if (jugadorActual().puntos() > 10000) {
-			jugadorActual().pierdePuntos();
+			jugadorActualImpl().pierdePuntos();
 		}
 		
 		if  (dadosParaJugar == 0) {
@@ -83,15 +83,15 @@ public class Juego {
 
 	private void ternas(Bag tirada) {
 		if (tirada.getCount(1) >= 3) {
-			jugadorActual().add(700);
+			jugadorActualImpl().add(700);
 		}
 		if (tirada.getCount(5) >= 3) {
-			jugadorActual().add(350);
+			jugadorActualImpl().add(350);
 		}
 		for (int i=2; i<=6; ++i) {
 			if (i==5) continue;
 			if (tirada.getCount(i) >= 3) {
-				jugadorActual().add(i*100);
+				jugadorActualImpl().add(i*100);
 				dadosParaJugar -= 3;
 			}
 		}
@@ -106,7 +106,7 @@ public class Juego {
 	}
 
 	public Jugador jugadorActual() {
-		return jugadores.get(jugadorActual);
+		return jugadorActualImpl();
 	}
 
 	public Jugador jugador(int orden){
@@ -116,9 +116,13 @@ public class Juego {
 	public Juego sePlanta() throws MovidaInvalida {
 		requisito(tiradas>0, "No puede plantarse si no tiró al menos una vez.");
 		requisito(jugadorActual().puntos()>=750, "No se puede plantar antes de tener 750");
-		jugadorActual().aseguraPuntos();
+		jugadorActualImpl().aseguraPuntos();
 		siguienteJugador();
 		return this;
+	}
+
+	private JugadorImpl jugadorActualImpl() {
+		return jugadores.get(jugadorActual);
 	}
 
 	private void requisito(boolean condicion, String mensaje) throws MovidaInvalida {
