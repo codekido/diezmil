@@ -223,6 +223,7 @@ public class JuegoTest {
 		assertEquals("El turno corresponde al jugador uno, ya que todos los jugadores pasaron.", juego3.jugador(0), juego3.jugadorActual());
 	}
 
+	@Test
 	public void testElTurnoVuelveAlJugadorUnoSinImportarCuantosJuegan() throws MovidaInvalida {
 		Juego juegoMuchos = new Juego(34);
 		for (int i=0; i<34; ++i) {
@@ -232,6 +233,7 @@ public class JuegoTest {
 		assertEquals("El turno corresponde al jugador uno, ya que todos los jugadores pasaron.", juegoMuchos.jugador(0), juegoMuchos.jugadorActual());
 	}
 
+	@Test
 	public void testElTurnoLlegaAlUltimoJugador() throws MovidaInvalida {
 		Juego juegoMuchos = new Juego(34);
 		for (int i=0; i<33; ++i) {
@@ -241,4 +243,5 @@ public class JuegoTest {
 		assertEquals("El turno corresponde al último jugador uno, ya que todos los jugadores pasaron.", juegoMuchos.jugador(33), juegoMuchos.jugadorActual());
 	}
 
+	
 }
