@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.commons.collections.Bag;
 import org.apache.commons.collections.bag.HashBag;
 
-// TODO: Refactory: que una clase maneje turnos (y use una lista circular?)
 public class Juego {
 
 	private ArrayList<Jugador> jugadores;
