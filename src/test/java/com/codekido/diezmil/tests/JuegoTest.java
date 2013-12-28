@@ -36,7 +36,7 @@ public class JuegoTest {
 	}
 
 	@Test
-	public void testDosUnosValen200() throws MovidaInvalida {
+	public void testDosValen200() throws MovidaInvalida {
 		assertEquals("El primer jugador debería tener 200 puntos por los dos unos.", 200, juego.forzar(1, 2, 3, 1, 4).jugador(0).puntos());
 	}
 	
