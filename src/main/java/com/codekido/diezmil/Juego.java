@@ -19,7 +19,6 @@ public class Juego {
 		for (int i=0; i<cantJugadores; ++i) {
 			jugadores.add(new Jugador());
 		}
-		jugadorActual = 0;
 	}
 	
 	public List<Jugador> jugadores() {
