@@ -18,4 +18,6 @@ public interface Juego {
 
 	public abstract void tirar() throws MovidaInvalida;
 
+	public abstract int dadosParaJugar();
+
 }

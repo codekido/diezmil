@@ -43,4 +43,9 @@ public class JuegoJugable implements Juego {
 	public void tirar() throws MovidaInvalida {
 		juegoTesteable.tirar();
 	}
+
+	@Override
+	public int dadosParaJugar() {
+		return juegoTesteable.dadosParaJugar();
+	}
 }

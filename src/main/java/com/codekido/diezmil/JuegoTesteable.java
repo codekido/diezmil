@@ -168,4 +168,9 @@ public class JuegoTesteable implements Juego {
 		forzar(dados);
 	}
 
+	@Override
+	public int dadosParaJugar() {
+		return dadosParaJugar;
+	}
+
 }
