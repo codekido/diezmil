@@ -7,11 +7,11 @@ import org.junit.Test;
 
 public class JuegoApiTest {
 
-	private Juego juego;
+	private JuegoTesteable juego;
 
 	@Before
 	public void setUp() throws Exception {
-		juego = new Juego(2);
+		juego = new JuegoTesteable(2);
 	}
 
 	@Test(expected=IllegalArgumentException.class)

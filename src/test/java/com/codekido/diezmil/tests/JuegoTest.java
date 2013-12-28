@@ -5,17 +5,17 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.codekido.diezmil.Juego;
+import com.codekido.diezmil.JuegoTesteable;
 import com.codekido.diezmil.Jugador;
 import com.codekido.diezmil.MovidaInvalida;
 
 public class JuegoTest {
 
-	private Juego juego;
+	private JuegoTesteable juego;
 	
 	@Before
 	public void setUp() throws Exception {
-		juego = new Juego(2);
+		juego = new JuegoTesteable(2);
 	}
 
 	@Test
@@ -212,7 +212,7 @@ public class JuegoTest {
 	
 	@Test
 	public void testElTurnoVuelveAlJugadorUnoPara3Jugadores() throws MovidaInvalida {
-		Juego juego3 = new Juego(3);
+		JuegoTesteable juego3 = new JuegoTesteable(3);
 		juego3.forzar(1, 1, 1, 3, 2);
 		juego3.sePlanta();
 		juego3.forzar(2, 3, 4, 6, 2);
@@ -223,7 +223,7 @@ public class JuegoTest {
 	
 	@Test
 	public void testSumanTodosYsigueYPasaLos750Puntos() throws MovidaInvalida {
-		Juego juegoReal = new Juego(3);
+		JuegoTesteable juegoReal = new JuegoTesteable(3);
 		juegoReal.forzar(1, 1, 3, 3, 3);
 		juegoReal.forzar(2, 2, 5, 5, 4);
 		juegoReal.forzar(1, 2, 2);
@@ -234,7 +234,7 @@ public class JuegoTest {
 
 	@Test
 	public void testElTurnoVuelveAlJugadorUnoSinImportarCuantosJuegan() throws MovidaInvalida {
-		Juego juegoMuchos = new Juego(34);
+		JuegoTesteable juegoMuchos = new JuegoTesteable(34);
 		for (int i=0; i<34; ++i) {
 			juegoMuchos.forzar(1, 1, 1, 3, 2);
 			juegoMuchos.sePlanta();
@@ -244,7 +244,7 @@ public class JuegoTest {
 
 	@Test
 	public void testElTurnoLlegaAlUltimoJugador() throws MovidaInvalida {
-		Juego juegoMuchos = new Juego(34);
+		JuegoTesteable juegoMuchos = new JuegoTesteable(34);
 		for (int i=0; i<33; ++i) {
 			juegoMuchos.forzar(1, 1, 1, 3, 2);
 			juegoMuchos.sePlanta();

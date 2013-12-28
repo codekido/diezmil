@@ -12,7 +12,7 @@ public class Juego {
 	private ArrayList<JugadorImpl> jugadores;
 	private int jugadorActual;
 	private int dadosParaJugar = 5;
-	private int tiradas;
+	protected int tiradas;
 	
 	public Juego(int cantJugadores) {
 		requisitoApi(cantJugadores>0, "Debe haber al menos un jugador");
@@ -26,23 +26,14 @@ public class Juego {
 		return Collections.unmodifiableList(jugadores);
 	}
 
-	public Juego forzar(int... dados) throws MovidaInvalida {
-		requisitoApi(tiradaValida(dados), "Dónde compraste esos dados? Esto no es un juego de rol");
-		tiradas++;
-		int puntosAntes = calculaPuntosJugada(dados);
-		resuelveTurnos(puntosAntes);
-		
-		return this;
-	}
-
-	private void resuelveTurnos(int puntosAntes) {
+	protected void resuelveTurnos(int puntosAntes) {
 		int puntosDespues = jugadorActual().puntos();
 		if (puntosAntes == puntosDespues) {
 			siguienteJugador();
 		}
 	}
 
-	private int calculaPuntosJugada(int... dados) throws MovidaInvalida {
+	protected int calculaPuntosJugada(int... dados) throws MovidaInvalida {
 		int puntosAntes = jugadorActual().puntos();
 		Bag tirada = getBag(dados);
 		validaCantidadDeDados(tirada);
@@ -132,7 +123,7 @@ public class Juego {
 		
 	}
 	
-	private void requisitoApi(boolean b, String string) {
+	protected void requisitoApi(boolean b, String string) {
 		if (!b) throw new IllegalArgumentException(string);
 	}
 
@@ -149,7 +140,7 @@ public class Juego {
 		return null;
 	}
 
-	private boolean tiradaValida(int[] dados) {
+	protected boolean tiradaValida(int[] dados) {
 		boolean valid = dados.length > 0 && dados.length <= 5;
 		for (int dado : dados) {
 			valid = valid && (dado>=1 && dado<=6);
