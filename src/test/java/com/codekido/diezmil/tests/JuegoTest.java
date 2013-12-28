@@ -213,7 +213,7 @@ public class JuegoTest {
 	}
 	
 	@Test
-	public void testElTurnoVuelveAlJugadorUnoSinImportarCuantosJuegan() throws MovidaInvalida {
+	public void testElTurnoVuelveAlJugadorUnoPara3Jugadores() throws MovidaInvalida {
 		Juego juego3 = new Juego(3);
 		juego3.forzar(1, 1, 1, 3, 2);
 		juego3.sePlanta();
@@ -222,4 +222,23 @@ public class JuegoTest {
 		juego3.sePlanta();
 		assertEquals("El turno corresponde al jugador uno, ya que todos los jugadores pasaron.", juego3.jugador(0), juego3.jugadorActual());
 	}
+
+	public void testElTurnoVuelveAlJugadorUnoSinImportarCuantosJuegan() throws MovidaInvalida {
+		Juego juegoMuchos = new Juego(34);
+		for (int i=0; i<34; ++i) {
+			juegoMuchos.forzar(1, 1, 1, 3, 2);
+			juegoMuchos.sePlanta();
+		}
+		assertEquals("El turno corresponde al jugador uno, ya que todos los jugadores pasaron.", juegoMuchos.jugador(0), juegoMuchos.jugadorActual());
+	}
+
+	public void testElTurnoLlegaAlUltimoJugador() throws MovidaInvalida {
+		Juego juegoMuchos = new Juego(34);
+		for (int i=0; i<33; ++i) {
+			juegoMuchos.forzar(1, 1, 1, 3, 2);
+			juegoMuchos.sePlanta();
+		}
+		assertEquals("El turno corresponde al último jugador uno, ya que todos los jugadores pasaron.", juegoMuchos.jugador(33), juegoMuchos.jugadorActual());
+	}
+
 }
