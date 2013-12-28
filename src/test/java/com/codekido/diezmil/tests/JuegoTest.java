@@ -162,7 +162,7 @@ public class JuegoTest {
 	public void testArriesgaYPierdeSoloPuntosTurnoActual() throws MovidaInvalida {
 		juego.forzar(1,1,1,3,2);
 		juego.sePlanta();
-		juego.forzar(2,3,4,6,2);
+		juego.forzar(2, 3, 4, 6, 2);
 		juego.forzar(1, 2, 3, 4, 5);
 		juego.forzar(2, 3, 2);
 		assertEquals("El primer jugaodr debería tener 1000 puntos del turno anterior.", 1000, juego.jugador(0).puntos());
@@ -221,5 +221,16 @@ public class JuegoTest {
 		juego3.forzar(1, 1, 1, 1, 1);
 		juego3.sePlanta();
 		assertEquals("El turno corresponde al jugador uno, ya que todos los jugadores pasaron.", juego3.jugador(0), juego3.jugadorActual());
+	}
+	
+	@Test
+	public void testSumanTodosYsigueYPasaLos750Puntos() throws MovidaInvalida {
+		Juego juegoReal = new Juego(3);
+		juegoReal.forzar(1, 1, 3, 3, 3);
+		juegoReal.forzar(2, 2, 5, 5, 4);
+		juegoReal.forzar(1, 2, 2);
+		juegoReal.forzar(1, 3);
+		juegoReal.sePlanta();
+		assertEquals("El jugador uno suma 800 puntos.", 800, juegoReal.jugador(0).puntos());
 	}
 }
